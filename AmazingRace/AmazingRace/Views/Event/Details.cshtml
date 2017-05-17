@@ -1,0 +1,44 @@
+﻿@model AmazingRace.Model.Event
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutManage.cshtml";
+}
+<div id="wrapper">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Event</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EventName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EventName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EventLocation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EventLocation)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EventTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EventTime)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.EventId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

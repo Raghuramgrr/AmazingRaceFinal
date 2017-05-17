@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AmazingRace.Model.PitStop>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutManage.cshtml";
+}
+<div id="wrapper">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PitStopName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PitStopLocation)
+        </th>
+        
+        <th></th>
+    </tr>
+    @{
+        int count = 0;//value you want to initialize it with
+        int eventIdPrev = 0;
+        int eventIdCurr = 0;
+
+        foreach (var item in Model)
+        {
+            eventIdCurr = item.EventId;
+
+            if (count == 0 || eventIdCurr != eventIdPrev)
+            {
+            <tr>
+                <td>
+                    @{eventIdPrev = item.EventId;
+                    }
+                @Html.ActionLink("Edit Pitstop for " + item.EventId, "ViewEdit", new { id = item.EventId })
+                </td>
+
+                </tr>
+
+
+        }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PitStopName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PitStopLocation)
+                </td>
+               
+
+            </tr>
+        count++;
+        }
+  }
+
+        </table>
+</div>
